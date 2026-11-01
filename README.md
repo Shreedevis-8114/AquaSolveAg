@@ -1,5 +1,12 @@
 # AquaSolve™ — Environmental Chemistry-Based Water Quality Analysis and Treatment System
 
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-black?logo=vercel&style=for-the-badge)](https://aquasolveag.vercel.app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Shreedevis-8114/AquaSolveAg)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-AquaSolveAg-181717?logo=github&style=for-the-badge)](https://github.com/Shreedevis-8114/AquaSolveAg)
+
+> 🌐 **Live Vercel Application:** [https://aquasolveag.vercel.app](https://aquasolveag.vercel.app)  
+> 🚀 **Instant 1-Click Vercel Deploy:** [Deploy on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/Shreedevis-8114/AquaSolveAg)
+
 AquaSolve is a full-stack, interactive environmental chemistry web application that transforms raw water measurements into chemical diagnoses, algorithmic multi-stage treatment trains, virtual treatment plant simulations, and publication-ready reports.
 
 ---
