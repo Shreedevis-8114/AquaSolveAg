@@ -1,0 +1,62 @@
+[
+  {
+    "id": "is10500",
+    "name": "Bureau of Indian Standards (BIS IS 10500:2012)",
+    "description": "Indian Standard Drinking Water Specification (Second Revision). Outlines acceptable limits and permissible limits in the absence of an alternate source.",
+    "jurisdiction": "India",
+    "publication_year": "2012",
+    "source": "Bureau of Indian Standards, IS 10500 : 2012 Drinking Water Specification",
+    "limits": {
+      "ph": { "min": 6.5, "max": 8.5, "desirable_max": 8.5, "permissible_max": 8.5, "type": "range", "notes": "No relaxation beyond 6.5 - 8.5." },
+      "turbidity": { "min": 0.0, "max": 5.0, "desirable_max": 1.0, "permissible_max": 5.0, "type": "upper_limit", "notes": "Desirable 1.0 NTU; permissible up to 5.0 NTU in absence of alternate source." },
+      "tds": { "min": 0.0, "max": 2000.0, "desirable_max": 500.0, "permissible_max": 2000.0, "type": "upper_limit", "notes": "Desirable 500 mg/L; permissible up to 2000 mg/L." },
+      "hardness": { "min": 0.0, "max": 600.0, "desirable_max": 200.0, "permissible_max": 600.0, "type": "upper_limit", "notes": "Desirable 200 mg/L; permissible up to 600 mg/L." },
+      "nitrate": { "min": 0.0, "max": 45.0, "desirable_max": 45.0, "permissible_max": 45.0, "type": "upper_limit", "notes": "45 mg/L as NO3; no relaxation." },
+      "chloride": { "min": 0.0, "max": 1000.0, "desirable_max": 250.0, "permissible_max": 1000.0, "type": "upper_limit", "notes": "Desirable 250 mg/L; permissible up to 1000 mg/L." },
+      "dissolved_oxygen": { "min": 4.0, "max": 14.0, "desirable_min": 4.0, "type": "lower_limit", "notes": "Operational parameter; dissolved oxygen >= 4 mg/L prevents septic conditions." },
+      "lead": { "min": 0.0, "max": 0.01, "desirable_max": 0.01, "permissible_max": 0.01, "type": "upper_limit", "notes": "0.01 mg/L maximum; toxic metal, no relaxation." },
+      "arsenic": { "min": 0.0, "max": 0.05, "desirable_max": 0.01, "permissible_max": 0.05, "type": "upper_limit", "notes": "Desirable 0.01 mg/L; permissible 0.05 mg/L in absence of alternate source." },
+      "iron": { "min": 0.0, "max": 1.0, "desirable_max": 1.0, "permissible_max": 1.0, "type": "upper_limit", "notes": "1.0 mg/L maximum permissible limit; causes staining." }
+    }
+  },
+  {
+    "id": "who",
+    "name": "World Health Organization Guidelines (WHO 2022)",
+    "description": "Guidelines for Drinking-water Quality, 4th edition incorporating the 1st and 2nd addenda. Global international benchmarks.",
+    "jurisdiction": "International",
+    "publication_year": "2022",
+    "source": "WHO Guidelines for Drinking-water Quality, 4th Edition",
+    "limits": {
+      "ph": { "min": 6.5, "max": 8.5, "desirable_max": 8.5, "permissible_max": 8.5, "type": "range", "notes": "Operational guideline 6.5-8.5 to prevent corrosion and maintain chlorination efficacy." },
+      "turbidity": { "min": 0.0, "max": 1.0, "desirable_max": 0.2, "permissible_max": 1.0, "type": "upper_limit", "notes": "Guideline: ideally < 0.2 NTU for disinfection; median < 1 NTU in distribution." },
+      "tds": { "min": 0.0, "max": 1000.0, "desirable_max": 600.0, "permissible_max": 1000.0, "type": "upper_limit", "notes": "Palatability threshold: <600 mg/L good, >1000 mg/L increasingly unacceptable." },
+      "hardness": { "min": 0.0, "max": 500.0, "desirable_max": 200.0, "permissible_max": 500.0, "type": "upper_limit", "notes": "Aesthetic guideline; scale occurs above 200 mg/L CaCO3." },
+      "nitrate": { "min": 0.0, "max": 50.0, "desirable_max": 50.0, "permissible_max": 50.0, "type": "upper_limit", "notes": "50 mg/L as NO3 to protect bottle-fed infants against methemoglobinemia." },
+      "chloride": { "min": 0.0, "max": 250.0, "desirable_max": 250.0, "permissible_max": 250.0, "type": "upper_limit", "notes": "Taste threshold 250 mg/L; corrosion acceleration above this level." },
+      "dissolved_oxygen": { "min": 5.0, "max": 14.0, "desirable_min": 5.0, "type": "lower_limit", "notes": "Operational indicator of water freshness; >= 5.0 mg/L recommended." },
+      "lead": { "min": 0.0, "max": 0.01, "desirable_max": 0.01, "permissible_max": 0.01, "type": "upper_limit", "notes": "Provisional health-based guideline value 0.01 mg/L." },
+      "arsenic": { "min": 0.0, "max": 0.01, "desirable_max": 0.01, "permissible_max": 0.01, "type": "upper_limit", "notes": "Provisional health-based guideline value 0.01 mg/L (10 ug/L)." },
+      "iron": { "min": 0.0, "max": 0.3, "desirable_max": 0.3, "permissible_max": 0.3, "type": "upper_limit", "notes": "Taste and staining threshold 0.3 mg/L." }
+    }
+  },
+  {
+    "id": "usepa",
+    "name": "US EPA National Drinking Water Standards",
+    "description": "United States Environmental Protection Agency National Primary (health) and Secondary (aesthetic) Regulations.",
+    "jurisdiction": "United States",
+    "publication_year": "2023",
+    "source": "EPA 816-F-09-004 National Primary Drinking Water Regulations",
+    "limits": {
+      "ph": { "min": 6.5, "max": 8.5, "desirable_max": 8.5, "permissible_max": 8.5, "type": "range", "notes": "Secondary standard: 6.5 - 8.5." },
+      "turbidity": { "min": 0.0, "max": 1.0, "desirable_max": 0.3, "permissible_max": 1.0, "type": "upper_limit", "notes": "Primary MCL: <= 0.3 NTU in 95% of monthly samples, never exceed 1.0 NTU." },
+      "tds": { "min": 0.0, "max": 500.0, "desirable_max": 500.0, "permissible_max": 500.0, "type": "upper_limit", "notes": "Secondary Maximum Contaminant Level (SMCL): 500 mg/L." },
+      "hardness": { "min": 0.0, "max": 300.0, "desirable_max": 150.0, "permissible_max": 300.0, "type": "upper_limit", "notes": "Guideline: 0-60 soft, 61-120 moderate, 121-180 hard, >180 very hard." },
+      "nitrate": { "min": 0.0, "max": 45.0, "desirable_max": 45.0, "permissible_max": 45.0, "type": "upper_limit", "notes": "MCL is 10 mg/L as Nitrogen (N), which equals ~44.3 - 45 mg/L as Nitrate (NO3-)." },
+      "chloride": { "min": 0.0, "max": 250.0, "desirable_max": 250.0, "permissible_max": 250.0, "type": "upper_limit", "notes": "SMCL 250 mg/L." },
+      "dissolved_oxygen": { "min": 5.0, "max": 14.0, "desirable_min": 5.0, "type": "lower_limit", "notes": "Recommended ecological/freshness threshold >= 5 mg/L." },
+      "lead": { "min": 0.0, "max": 0.015, "desirable_max": 0.0, "permissible_max": 0.015, "type": "upper_limit", "notes": "Action Level: 0.015 mg/L (MCLG is zero)." },
+      "arsenic": { "min": 0.0, "max": 0.01, "desirable_max": 0.0, "permissible_max": 0.01, "type": "upper_limit", "notes": "MCL is 0.010 mg/L (10 ppb)." },
+      "iron": { "min": 0.0, "max": 0.3, "desirable_max": 0.3, "permissible_max": 0.3, "type": "upper_limit", "notes": "SMCL: 0.3 mg/L for color, taste, staining." }
+    }
+  }
+]

@@ -1,0 +1,20 @@
+experiment_id,sample_id,experiment_date,water_source,contaminant,initial_concentration,final_concentration,unit,treatment_method,treatment_duration,ph,temperature,treatment_dose,replicate_number,measurement_uncertainty,instrument_method,notes
+EXP-PB-GAC-001,SAMP-GW-01,2026-03-10,Groundwater,Lead,0.085,0.012,mg/L,Activated Carbon,60,7.0,22.0,25.0,1,0.002,ICP-MS,Nominal room temperature batch adsorption test
+EXP-PB-GAC-001,SAMP-GW-01,2026-03-10,Groundwater,Lead,0.085,0.014,mg/L,Activated Carbon,60,7.0,22.0,25.0,2,0.002,ICP-MS,Triplicate replicate 2
+EXP-PB-GAC-001,SAMP-GW-01,2026-03-10,Groundwater,Lead,0.085,0.011,mg/L,Activated Carbon,60,7.0,22.0,25.0,3,0.002,ICP-MS,Triplicate replicate 3
+EXP-PB-GAC-002,SAMP-GW-01,2026-03-11,Groundwater,Lead,0.085,0.048,mg/L,Activated Carbon,60,5.2,22.0,25.0,1,0.003,ICP-MS,Acidic conditions show reduced adsorption capacity due to proton competition
+EXP-PB-GAC-002,SAMP-GW-01,2026-03-11,Groundwater,Lead,0.085,0.051,mg/L,Activated Carbon,60,5.2,22.0,25.0,2,0.003,ICP-MS,Acidic replicate 2
+EXP-PB-GAC-002,SAMP-GW-01,2026-03-11,Groundwater,Lead,0.085,0.046,mg/L,Activated Carbon,60,5.2,22.0,25.0,3,0.003,ICP-MS,Acidic replicate 3
+EXP-AS-COAG-001,SAMP-RIV-02,2026-03-12,River,Arsenic,0.065,0.008,mg/L,Coagulation,30,6.8,20.0,35.0,1,0.001,Hydride Generation AAS,Ferric chloride coagulant dosing jar test
+EXP-AS-COAG-001,SAMP-RIV-02,2026-03-12,River,Arsenic,0.065,0.009,mg/L,Coagulation,30,6.8,20.0,35.0,2,0.001,Hydride Generation AAS,Coagulation jar test replicate 2
+EXP-AS-COAG-001,SAMP-RIV-02,2026-03-12,River,Arsenic,0.065,0.007,mg/L,Coagulation,30,6.8,20.0,35.0,3,0.001,Hydride Generation AAS,Coagulation jar test replicate 3
+EXP-NO3-IX-001,SAMP-AGR-03,2026-03-14,Agricultural Groundwater,Nitrate,92.0,11.5,mg/L,Ion Exchange,45,7.4,21.0,50.0,1,0.5,Ion Chromatography,Strong-base anion exchange resin column
+EXP-NO3-IX-001,SAMP-AGR-03,2026-03-14,Agricultural Groundwater,Nitrate,92.0,12.0,mg/L,Ion Exchange,45,7.4,21.0,50.0,2,0.5,Ion Chromatography,Ion Exchange replicate 2
+EXP-NO3-RO-001,SAMP-AGR-03,2026-03-15,Agricultural Groundwater,Nitrate,92.0,8.5,mg/L,Reverse Osmosis,60,6.8,21.0,0.0,1,0.4,Ion Chromatography,Thin-film composite polyamide membrane at 15 bar feed
+EXP-NO3-RO-001,SAMP-AGR-03,2026-03-15,Agricultural Groundwater,Nitrate,92.0,8.0,mg/L,Reverse Osmosis,60,6.8,21.0,0.0,2,0.4,Ion Chromatography,Reverse Osmosis replicate 2
+EXP-TURB-SED-001,SAMP-MON-04,2026-03-16,River,Turbidity,84.0,12.0,NTU,Sedimentation,90,7.1,24.0,0.0,1,0.5,Nephelometer,Gravity settling column test following flash mix
+EXP-TURB-SED-001,SAMP-MON-04,2026-03-16,River,Turbidity,84.0,11.0,NTU,Sedimentation,90,7.1,24.0,0.0,2,0.5,Nephelometer,Sedimentation replicate 2
+EXP-TURB-SED-001,SAMP-MON-04,2026-03-16,River,Turbidity,84.0,28.0,NTU,Sedimentation,90,7.1,24.0,0.0,3,0.5,Nephelometer,Sudden hydraulic turbulence disturbance noted in settling column
+EXP-FE-AER-001,SAMP-BW-05,2026-03-17,Borewell,Iron,4.5,0.8,mg/L,Aeration,40,7.2,22.0,0.0,1,0.05,Phenanthroline Colorimetry,Coarse bubble diffuser cascade aeration
+EXP-FE-AER-001,SAMP-BW-05,2026-03-17,Borewell,Iron,4.5,0.75,mg/L,Aeration,40,7.2,22.0,0.0,2,0.05,Phenanthroline Colorimetry,Aeration replicate 2
+EXP-PB-GAC-003,SAMP-GW-01,2026-03-18,Groundwater,Lead,0.085,0.092,mg/L,Activated Carbon,15,4.0,22.0,5.0,1,0.004,ICP-MS,Apparent desorption / elution from pre-loaded carbon column bed under severe acid shock

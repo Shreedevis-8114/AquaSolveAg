@@ -1,0 +1,102 @@
+[
+  {
+    "id": "dataset-a",
+    "title": "Dataset A — High Hardness (Limestone Groundwater)",
+    "description": "Deep borewell drawing from a karst limestone formation. Extreme multivalent calcium/magnesium hardness causing severe scaling in pipes and appliances, but other parameters remain compliant.",
+    "source": "Borewell",
+    "intended_use": "Drinking & Domestic",
+    "standard_id": "is10500",
+    "measurements": {
+      "ph": 7.6,
+      "turbidity": 1.2,
+      "tds": 720.0,
+      "hardness": 680.0,
+      "nitrate": 18.0,
+      "chloride": 110.0,
+      "dissolved_oxygen": 5.4,
+      "iron": 0.15,
+      "arsenic": 0.004,
+      "lead": 0.002
+    }
+  },
+  {
+    "id": "dataset-b",
+    "title": "Dataset B — High Turbidity & Silt (Monsoon River Intake)",
+    "description": "Surface river water during heavy precipitation runoff. High colloidal silt, elevated turbidity, and sediment-bound iron requiring coagulation, sedimentation, and granular filtration.",
+    "source": "River",
+    "intended_use": "Potable Water Supply",
+    "standard_id": "is10500",
+    "measurements": {
+      "ph": 7.2,
+      "turbidity": 78.0,
+      "tds": 240.0,
+      "hardness": 160.0,
+      "nitrate": 14.0,
+      "chloride": 45.0,
+      "dissolved_oxygen": 6.8,
+      "iron": 3.4,
+      "arsenic": 0.003,
+      "lead": 0.004
+    }
+  },
+  {
+    "id": "dataset-c",
+    "title": "Dataset C — High Nitrate (Agricultural Runoff)",
+    "description": "Shallow aquifer underlying intensive agrochemical farming. Elevated nitrate exceeding drinking water limits, posing methemoglobinemia risk, requiring ion exchange or RO.",
+    "source": "Groundwater",
+    "intended_use": "Drinking & Cooking",
+    "standard_id": "is10500",
+    "measurements": {
+      "ph": 6.9,
+      "turbidity": 1.8,
+      "tds": 640.0,
+      "hardness": 280.0,
+      "nitrate": 86.0,
+      "chloride": 190.0,
+      "dissolved_oxygen": 4.8,
+      "iron": 0.22,
+      "arsenic": 0.005,
+      "lead": 0.003
+    }
+  },
+  {
+    "id": "dataset-d",
+    "title": "Dataset D — Multiple Water Quality Problems (Comprehensive Showcase)",
+    "description": "Complex unconfined groundwater impacted by industrial seepage and mineral leaching. Exhibits acidic pH, elevated turbidity, high TDS, severe hardness, toxic nitrate, dissolved iron, and trace heavy metals (As, Pb). Ideal for full multi-stage treatment plant simulation.",
+    "source": "Industrial Area Borewell",
+    "intended_use": "Drinking & Domestic",
+    "standard_id": "is10500",
+    "measurements": {
+      "ph": 5.9,
+      "turbidity": 34.0,
+      "tds": 1480.0,
+      "hardness": 640.0,
+      "nitrate": 72.0,
+      "chloride": 420.0,
+      "dissolved_oxygen": 2.4,
+      "iron": 4.1,
+      "arsenic": 0.042,
+      "lead": 0.028
+    }
+  },
+  {
+    "id": "dataset-e",
+    "title": "Dataset E — Compliant Baseline (Protected Aquifer)",
+    "description": "High-quality pristine spring source with natural mineral balance. All parameters comfortably within WHO and IS 10500 guidelines, demonstrating why extensive treatment shouldn't be blindly prescribed.",
+    "source": "Protected Spring",
+    "intended_use": "Drinking",
+    "standard_id": "is10500",
+    "measurements": {
+      "ph": 7.4,
+      "turbidity": 0.6,
+      "tds": 210.0,
+      "hardness": 140.0,
+      "nitrate": 11.0,
+      "chloride": 35.0,
+      "dissolved_oxygen": 7.2,
+      "iron": 0.05,
+      "arsenic": 0.002,
+      "lead": 0.001
+    }
+  }
+]

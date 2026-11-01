@@ -1,0 +1,91 @@
+{
+  "removal_efficiencies": {
+    "aeration": {
+      "iron": { "fraction": 0.70, "range": [0.60, 0.80], "notes": "Oxidizes ferrous iron to insoluble ferric hydroxide; requires downstream filtration for complete physical removal." },
+      "dissolved_oxygen": { "model": "approach_saturation", "target_mg_l": 8.8, "rate": 0.75, "notes": "Gas transfer brings DO toward atmospheric saturation (~8.8 mg/L at 20 deg C)." },
+      "ph": { "model": "delta", "delta": 0.3, "notes": "Strips dissolved carbonic acid (CO2 gas), causing slight pH rise." }
+    },
+    "coagulation": {
+      "turbidity": { "fraction": 0.65, "range": [0.55, 0.75], "notes": "Destabilizes colloidal particles into micro-flocs." },
+      "arsenic": { "fraction": 0.60, "range": [0.45, 0.70], "notes": "Co-precipitates arsenate [As(V)] onto metallic hydroxide matrices." },
+      "ph": { "model": "delta", "delta": -0.3, "notes": "Alum/ferric hydrolysis consumes bicarbonate alkalinity, lowering pH." }
+    },
+    "flocculation": {
+      "turbidity": { "fraction": 0.20, "range": [0.10, 0.30], "notes": "Aggregates micro-flocs into macro-flocs for gravity settling." }
+    },
+    "sedimentation": {
+      "turbidity": { "fraction": 0.70, "range": [0.60, 0.85], "notes": "Stokes law gravity settling of dense floc mass." },
+      "iron": { "fraction": 0.60, "range": [0.50, 0.75], "notes": "Settles oxidized ferric floc." },
+      "arsenic": { "fraction": 0.50, "range": [0.40, 0.65], "notes": "Settles co-precipitated arsenic flocs." }
+    },
+    "sand_filtration": {
+      "turbidity": { "fraction": 0.85, "range": [0.75, 0.95], "notes": "Deep-bed physical capture of residual suspended particles." },
+      "iron": { "fraction": 0.80, "range": [0.70, 0.90], "notes": "Strains out suspended ferric hydroxide particles." }
+    },
+    "ultrafiltration": {
+      "turbidity": { "fraction": 0.98, "range": [0.95, 0.99], "notes": "Absolute 0.02 micron pore size exclusion." }
+    },
+    "activated_carbon": {
+      "lead": { "fraction": 0.75, "range": [0.60, 0.85], "notes": "Chemisorption on functional carbon surfaces." },
+      "arsenic": { "fraction": 0.50, "range": [0.35, 0.65], "notes": "Moderate sorption of inorganic arsenite/arsenate." }
+    },
+    "ion_exchange": {
+      "hardness": { "fraction": 0.95, "range": [0.90, 0.98], "notes": "Stoichiometric cation replacement (Ca2+/Mg2+ by 2Na+)." },
+      "nitrate": { "fraction": 0.88, "range": [0.80, 0.94], "notes": "Nitrate-selective strong-base anion exchange." },
+      "lead": { "fraction": 0.92, "range": [0.85, 0.96], "notes": "Strong heavy metal affinity on cation resins." }
+    },
+    "lime_soda_softening": {
+      "hardness": { "fraction": 0.82, "range": [0.75, 0.90], "notes": "Precipitates CaCO3 and Mg(OH)2 down to chemical solubility limits (~35-50 mg/L)." },
+      "iron": { "fraction": 0.85, "range": [0.75, 0.92], "notes": "Precipitates as insoluble iron hydroxides at high alkaline pH." },
+      "arsenic": { "fraction": 0.70, "range": [0.55, 0.80], "notes": "Co-precipitates with calcium carbonate sludge." },
+      "ph": { "model": "set_minimum", "min_target": 10.0, "notes": "Caustic addition drives pH up into precipitate formation range (10.0 - 10.8)." }
+    },
+    "reverse_osmosis": {
+      "tds": { "fraction": 0.94, "range": [0.90, 0.97], "notes": "Thin-film composite membrane rejection of dissolved ionic species." },
+      "hardness": { "fraction": 0.96, "range": [0.92, 0.99], "notes": "High rejection of multivalent Ca2+ and Mg2+ cations." },
+      "nitrate": { "fraction": 0.86, "range": [0.80, 0.92], "notes": "Rejection of monovalent nitrate anion." },
+      "chloride": { "fraction": 0.92, "range": [0.88, 0.96], "notes": "Rejection of monovalent chloride anion." },
+      "lead": { "fraction": 0.97, "range": [0.94, 0.99], "notes": "High molecular weight multivalent metal rejection." },
+      "arsenic": { "fraction": 0.90, "range": [0.82, 0.95], "notes": "Good rejection of arsenate; arsenite rejection ~60-80%." },
+      "iron": { "fraction": 0.95, "range": [0.90, 0.98], "notes": "Rejection of dissolved iron (risk of membrane fouling if unoxidized)." },
+      "ph": { "model": "delta", "delta": -0.8, "notes": "Permeate drops in pH due to bicarbonate ion rejection and dissolved CO2 passage." }
+    },
+    "chemical_precipitation": {
+      "lead": { "fraction": 0.92, "range": [0.85, 0.96], "notes": "Precipitation of insoluble lead hydroxide/carbonate at controlled pH." },
+      "iron": { "fraction": 0.90, "range": [0.82, 0.95], "notes": "Conversion of soluble iron to insoluble ferric hydroxide." },
+      "arsenic": { "fraction": 0.85, "range": [0.75, 0.92], "notes": "Ferric arsenate precipitation." }
+    },
+    "neutralization": {
+      "ph": { "model": "normalize", "target": 7.3, "notes": "Acid or base titration returning pH to neutral balanced level (7.2 - 7.4)." }
+    },
+    "biological_nitrate_treatment": {
+      "nitrate": { "fraction": 0.90, "range": [0.82, 0.95], "notes": "Microbial respiratory reduction of NO3- to inert N2 gas." },
+      "dissolved_oxygen": { "model": "delta", "delta": -3.5, "notes": "Microbial heterotrophic respiration depletes dissolved oxygen." }
+    },
+    "disinfection": {
+      "ph": { "model": "delta", "delta": 0.0, "notes": "Maintains microbial barrier without altering bulk mineral chemistry." }
+    }
+  },
+  "sequence_prerequisites": {
+    "reverse_osmosis": {
+      "requires_prior": ["sand_filtration", "ultrafiltration"],
+      "rule": "Membrane Protection: Turbidity must be polished through Sand Filtration or Ultrafiltration before Reverse Osmosis to prevent rapid silt density fouling.",
+      "critical_if_exceeded": { "turbidity": 1.0, "iron": 0.1 }
+    },
+    "ion_exchange": {
+      "requires_prior": ["sand_filtration"],
+      "rule": "Resin Bed Protection: Suspended solids and iron flocs must be filtered prior to ion exchange to prevent irreversible pore clogging.",
+      "critical_if_exceeded": { "turbidity": 2.0, "iron": 0.3 }
+    },
+    "activated_carbon": {
+      "requires_prior": ["sand_filtration"],
+      "rule": "Carbon Pore Integrity: Suspended particulates must be removed before granular carbon contactors to avoid pore blinding.",
+      "critical_if_exceeded": { "turbidity": 1.5 }
+    },
+    "disinfection": {
+      "recommended_position": "final",
+      "rule": "Terminal Barrier: Disinfection should always be placed at the final stage to provide clean contact and pathogen barrier."
+    }
+  },
+  "scientific_disclaimer": "Simulated treatment values are preliminary theoretical estimates based on documented engineering performance literature (AWWA, WHO, EPA). They do NOT certify water as potable or safe for consumption. Actual treatment performance depends on temperature, hydraulic detention time, chemical dosing, membrane degradation, and complex competitive ionic equilibria. Laboratory testing of treated effluents is mandatory before use."
+}

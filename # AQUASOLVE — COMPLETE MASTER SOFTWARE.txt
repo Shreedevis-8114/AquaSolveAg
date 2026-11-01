@@ -1,0 +1,1261 @@
+# AQUASOLVE — COMPLETE MASTER SOFTWARE DEVELOPMENT PROMPT
+
+## ROLE AND OBJECTIVE
+
+Act as a senior full-stack software engineer, UI/UX designer, environmental chemistry specialist, software architect, database engineer, QA tester, and deployment engineer.
+
+Your responsibility is to design, develop, test, and deploy a complete, modern, interactive web application named **AquaSolve — An Interactive Environmental Chemistry-Based Water Quality Analysis and Treatment Recommendation System**.
+
+This must be a genuinely functional, end-to-end software application, not a static website, presentation, mockup, or basic water-quality calculator.
+
+The application must transform water-quality measurements into meaningful analysis, chemistry-based explanations, treatment recommendations, interactive treatment simulations, and downloadable reports.
+
+The central workflow is:
+
+**Enter Water Data → Validate → Analyze → Diagnose → Explain Chemistry → Recommend Treatment → Simulate Treatment → Compare Results → Generate Report**
+
+Build the entire application using clean, maintainable, modular, production-oriented code.
+
+The project is an educational and preliminary decision-support system. It must never claim that simulated treatment results certify water as safe for drinking.
+
+---
+
+# 1. TECHNOLOGY STACK
+
+Use the following recommended stack unless there is a compelling technical reason to change it.
+
+### Frontend
+- React with Vite
+- TypeScript
+- Tailwind CSS
+- React Router
+- Recharts for charts and graphs
+- Lucide React for icons
+- Framer Motion or Motion for animations
+- React Flow for the interactive treatment plant
+- Axios or a typed Fetch API client
+
+### Backend
+- Python
+- FastAPI
+- Pydantic for request validation
+- SQLAlchemy for database operations
+- Uvicorn for running the API
+
+### Database
+- SQLite for initial local development
+- PostgreSQL for production deployment if persistent storage is required
+
+### Reports
+- ReportLab for server-side PDF generation
+- CSV export for structured results
+
+### Testing
+- Pytest for backend testing
+- Vitest and React Testing Library for frontend testing
+- Playwright for end-to-end testing
+
+### Deployment
+- Vercel for the frontend
+- Render or another compatible Python hosting service for the backend
+- Managed PostgreSQL if database persistence is enabled
+
+Ensure all selected packages are mutually compatible.
+
+---
+
+# 2. APPLICATION DESIGN AND USER EXPERIENCE
+
+Develop AquaSolve with a professional environmental technology aesthetic.
+
+### Design direction
+
+Use a modern combination of:
+
+- Deep navy blue
+- Ocean blue
+- Cyan
+- Teal
+- White
+- Light aqua
+- Subtle green accents
+
+Use orange or red only where appropriate for warning and error states.
+
+The interface must feel like an advanced environmental analysis platform rather than a simple student project.
+
+### UI requirements
+
+Implement:
+
+- Responsive sidebar navigation
+- Professional top navigation
+- Modern dashboard cards
+- Rounded containers
+- Clean typography
+- Smooth transitions
+- Interactive charts
+- Hover effects
+- Loading indicators
+- Skeleton loading states
+- Toast notifications
+- Form validation messages
+- Empty states
+- Accessible buttons and forms
+- Mobile and desktop layouts
+
+Use animations purposefully without reducing performance.
+
+### Primary navigation
+
+1. Dashboard
+2. Water Quality Analysis
+3. Chemistry Insights
+4. Treatment Recommendations
+5. Interactive Treatment Simulator
+6. What-if Analysis
+7. Before & After Comparison
+8. Reports
+9. Analysis History
+10. About AquaSolve
+
+All navigation elements must lead to functional pages.
+
+---
+
+# 3. LANDING PAGE
+
+Create a polished landing page with:
+
+### Hero section
+
+Title:
+
+**AquaSolve**
+
+Subtitle:
+
+**Analyze Water. Understand Chemistry. Explore Solutions.**
+
+Description:
+
+AquaSolve transforms water-quality measurements into environmental chemistry insights, personalized treatment recommendations, and interactive treatment simulations.
+
+Primary button:
+
+**Start Water Analysis**
+
+Secondary button:
+
+**Explore Treatment Simulator**
+
+### Additional sections
+
+Include:
+
+- How AquaSolve Works
+- Key Features
+- Water Quality Parameters
+- Treatment Technologies
+- Interactive Simulation Preview
+- Environmental Chemistry Applications
+- About the Project
+
+Create an attractive visual representation of water moving through a treatment process.
+
+All buttons must work.
+
+---
+
+# 4. WATER QUALITY DATA INPUT MODULE
+
+Create a complete input interface for entering water-quality measurements.
+
+### Supported parameters
+
+| Parameter | Unit |
+|---|---|
+| pH | Unitless |
+| Turbidity | NTU |
+| Total Dissolved Solids | mg/L |
+| Total Hardness | mg/L as CaCO₃ |
+| Nitrate | mg/L, with chemical basis identified |
+| Chloride | mg/L |
+| Dissolved Oxygen | mg/L |
+| Lead | mg/L |
+| Arsenic | mg/L |
+| Iron | mg/L |
+| Other supported metals | Appropriate units |
+
+Do not assume that every parameter must be entered.
+
+Allow users to:
+
+- Enter individual values
+- Select water source
+- Select intended water use
+- Select an applicable reference standard
+- Load a sample dataset
+- Clear the form
+- Save an analysis
+- Submit the values for analysis
+
+Water-source choices:
+
+- Borewell
+- Municipal supply
+- River
+- Lake
+- Pond
+- Groundwater
+- Industrial sample
+- Other
+
+### Validation
+
+Validate:
+
+- Required fields
+- Numeric inputs
+- Physically meaningful ranges
+- Nonnegative concentration values
+- pH range
+- Missing parameters
+- Correct units
+- Supported reference standards
+
+Distinguish invalid measurements from unusual but potentially valid measurements.
+
+Never silently replace missing values with zero.
+
+---
+
+# 5. WATER QUALITY STANDARDS DATABASE
+
+Create a configurable database of reference limits.
+
+Support selected standards such as:
+
+- BIS IS 10500, for applicable drinking-water parameters
+- WHO drinking-water guidelines
+- Other relevant standards where verified data is available
+
+Each reference entry must include:
+
+- Parameter name
+- Unit
+- Reference value or range
+- Standard name
+- Version or publication year
+- Source reference
+- Applicable water-use context
+- Limit type
+- Notes and exceptions
+
+Do not invent regulatory limits.
+
+Do not assume that every standard specifies a limit for every parameter.
+
+If a reference value is unavailable, display:
+
+**Reference limit not configured.**
+
+Separate desirable, permissible, guideline, and operational values wherever relevant.
+
+Use independently verified references before populating the final standards database.
+
+---
+
+# 6. WATER QUALITY ANALYSIS ENGINE
+
+Develop a backend analysis engine that compares entered measurements against the selected reference profile.
+
+For each parameter:
+
+1. Read the submitted measurement.
+2. Validate its unit and value.
+3. Retrieve the applicable reference rule.
+4. Compare the measurement with the rule.
+5. Determine whether the measurement is within or outside the reference.
+6. Explain the significance.
+7. Return a structured analysis result.
+
+### Status classifications
+
+Use:
+
+- Within selected reference
+- Below selected reference
+- Above selected reference
+- Not evaluated
+- Invalid input
+
+Use clear visual indicators.
+
+### Overall analysis summary
+
+Display:
+
+- Total parameters submitted
+- Parameters evaluated
+- Parameters outside reference
+- Parameters without configured limits
+- Identified water-quality concerns
+
+Do not label the water as universally safe or unsafe solely from this partial analysis.
+
+### API
+
+Implement:
+
+`POST /api/analyze`
+
+Return structured JSON with parameter results, explanations, reference information, and identified concerns.
+
+---
+
+# 7. ENVIRONMENTAL CHEMISTRY KNOWLEDGE BASE
+
+Build a comprehensive chemistry knowledge base explaining each supported water-quality parameter.
+
+Each entry must contain:
+
+- Parameter name
+- Scientific definition
+- Environmental significance
+- Common possible sources
+- Relevant chemistry
+- Potential consequences
+- Applicable reference information
+- Appropriate treatment options
+- Treatment limitations
+
+### Chemistry topics
+
+Include:
+
+**pH**
+- Acidity and alkalinity
+- Hydrogen ion activity
+- Acid-base reactions
+- Neutralization
+
+**Hardness**
+- Calcium and magnesium ions
+- Temporary and permanent hardness
+- Ion exchange
+- Chemical precipitation
+
+**Turbidity**
+- Suspended particles
+- Colloidal stability
+- Coagulation
+- Flocculation
+- Sedimentation
+
+**TDS**
+- Dissolved ionic substances
+- Electrical conductivity relationship
+- Membrane separation
+- Limitations of using TDS as a contaminant identifier
+
+**Nitrate**
+- Nitrogen compounds in water
+- Possible agricultural contamination
+- Ion exchange
+- Biological treatment
+- Reverse osmosis
+
+**Chloride**
+- Dissolved salts
+- Salinity
+- Membrane-based desalination
+
+**Heavy Metals**
+- Metal speciation
+- Solubility
+- Precipitation
+- Adsorption
+- Ion exchange
+- Membrane processes
+
+**Dissolved Oxygen**
+- Aquatic oxygen availability
+- Aeration
+- Environmental water-quality significance
+
+Provide understandable chemistry explanations without sacrificing scientific correctness.
+
+---
+
+# 8. TREATMENT RECOMMENDATION ENGINE
+
+Develop an intelligent rule-based recommendation engine.
+
+This engine must use the analysis results to recommend suitable treatment methods.
+
+### Supported treatment methods
+
+Implement knowledge entries for:
+
+1. Coagulation
+2. Flocculation
+3. Sedimentation
+4. Sand filtration
+5. Activated carbon adsorption
+6. Ion exchange
+7. Lime-soda softening
+8. Reverse osmosis
+9. Ultrafiltration
+10. Neutralization / pH adjustment
+11. Aeration
+12. Chemical precipitation
+13. Disinfection
+14. Biological nitrate treatment
+
+Each method must include:
+
+- Name
+- Description
+- Target contaminants
+- Chemistry principle
+- Suitable applications
+- Prerequisites
+- Limitations
+- Possible secondary effects
+- Supporting reference information
+
+### Example rules
+
+High turbidity:
+
+Coagulation → Flocculation → Sedimentation → Filtration
+
+High hardness:
+
+Ion Exchange or Lime-Soda Softening
+
+High nitrate:
+
+Ion Exchange or Reverse Osmosis, with biological treatment considered where appropriate
+
+Acidic water:
+
+Appropriate pH adjustment
+
+Selected heavy-metal contamination:
+
+Appropriate precipitation, adsorption, ion exchange, or membrane treatment depending on metal chemistry.
+
+### Recommendation behavior
+
+The engine must:
+
+- Detect multiple simultaneous concerns
+- Identify suitable treatment alternatives
+- Recommend a logical treatment sequence
+- Explain why each stage is included
+- Identify unresolved contaminants
+- Explain limitations
+- Avoid recommending incompatible stages
+- Avoid suggesting that a treatment removes contaminants it does not target
+
+Return recommendations as structured data.
+
+### API
+
+`POST /api/recommend`
+
+---
+
+# 9. INTERACTIVE WATER TREATMENT PLANT
+
+This is one of AquaSolve's most important features.
+
+Develop a fully interactive virtual treatment plant using React Flow or an equivalent graph-based interface.
+
+### Visual workflow
+
+Raw Water → Selected Treatment Stages → Simulated Treated Water
+
+Create visually distinct nodes for:
+
+- Raw water input
+- Coagulation
+- Flocculation
+- Sedimentation
+- Filtration
+- Activated carbon
+- Ion exchange
+- Reverse osmosis
+- Neutralization
+- Aeration
+- Disinfection
+- Treated water output
+
+### Interactive functionality
+
+Users must be able to:
+
+- Add treatment stages
+- Remove treatment stages
+- Enable or disable stages
+- Rearrange compatible stages
+- Select a stage to inspect its chemistry
+- Run a simulation
+- Reset the simulation
+- Compare treatment sequences
+
+### Stage details
+
+Clicking a stage must display:
+
+- Treatment name
+- Purpose
+- Chemical principle
+- Target parameters
+- Estimated effect, if supported
+- Assumptions
+- Limitations
+
+### Animation
+
+Implement visual feedback for:
+
+- Water flowing between stages
+- Active stages
+- Disabled stages
+- Completed simulation stages
+- Warnings
+- Simulation progress
+
+Animations must be visually attractive but scientifically neutral.
+
+Do not imply that animated water movement represents a physical engineering simulation.
+
+---
+
+# 10. TREATMENT SIMULATION ENGINE
+
+Develop a backend simulator that estimates the effect of selected treatment stages on supported water-quality parameters.
+
+### Inputs
+
+- Original measurements
+- Selected treatment sequence
+- Documented simulation assumptions
+- Applicable treatment parameters
+
+### Outputs
+
+- Estimated values after each stage
+- Final simulated measurements
+- Changes from baseline
+- Unresolved concerns
+- Simulation warnings
+- Assumptions and model limitations
+
+### Simplified concentration model
+
+For an eligible contaminant and treatment process, a basic illustrative model may be:
+
+`C_after = C_before × (1 - removal_fraction)`
+
+Use this equation only where such a model is scientifically appropriate.
+
+Do not use the same removal percentage for every contaminant or treatment.
+
+Do not apply percentage-removal models blindly to pH, dissolved oxygen, or parameters requiring different chemical relationships.
+
+### Scientific requirements
+
+- Store model assumptions separately from the application code.
+- Associate efficiencies with specific contaminants and treatment methods.
+- Document sources for each efficiency.
+- Allow uncertainty or efficiency ranges where appropriate.
+- Handle unsupported treatment-parameter combinations explicitly.
+- Avoid generating negative concentrations.
+- Respect stage order and prerequisites.
+- Clearly distinguish measured and simulated values.
+
+Do not fabricate scientifically validated efficiencies.
+
+If validated coefficients are unavailable, use clearly labeled illustrative assumptions only in demonstration mode.
+
+### API
+
+`POST /api/simulate`
+
+---
+
+# 11. WHAT-IF ANALYSIS ENGINE
+
+Develop a dedicated comparison interface for evaluating alternative treatment choices.
+
+### Functionality
+
+Allow users to:
+
+- Remove a filtration stage
+- Add activated carbon
+- Replace ion exchange with reverse osmosis
+- Compare alternative treatment sequences
+- Modify documented assumptions
+- Observe changes in estimated outcomes
+
+### Comparison mode
+
+Support:
+
+**Scenario A:** Original recommended treatment sequence
+
+**Scenario B:** Modified treatment sequence
+
+Display:
+
+- Treatment stages
+- Estimated output parameters
+- Remaining concerns
+- Relevant advantages
+- Limitations
+- Differences between scenarios
+
+### API
+
+`POST /api/compare-scenarios`
+
+Ensure the same baseline dataset is used for fair comparisons.
+
+---
+
+# 12. BEFORE-AND-AFTER DASHBOARD
+
+Create a visually rich comparison dashboard.
+
+### Dashboard components
+
+**Summary cards**
+- Parameters evaluated
+- Parameters outside reference before treatment
+- Parameters outside reference after simulation
+- Number of selected treatment stages
+
+**Charts**
+- Before-and-after grouped bar charts
+- Individual parameter comparisons
+- Stage-wise concentration changes
+- Reference-limit indicators
+
+**Comparison table**
+
+Include:
+
+- Parameter
+- Original measurement
+- Simulated result
+- Unit
+- Reference
+- Change
+- Resulting status
+
+Do not combine incomparable units on a misleading common scale.
+
+Use individual charts or normalized indicators where appropriate.
+
+Make it clear that simulated improvements are estimates, not laboratory-confirmed results.
+
+---
+
+# 13. REPORT GENERATION
+
+Implement professional PDF report generation.
+
+### Report structure
+
+**AquaSolve Water Quality Analysis Report**
+
+Include:
+
+1. Report ID
+2. Date and time
+3. Water source
+4. Intended water use
+5. Selected reference standard
+6. Original measurements
+7. Water-quality analysis
+8. Identified concerns
+9. Chemistry explanations
+10. Recommended treatment methods
+11. Selected treatment sequence
+12. Simulation assumptions
+13. Simulated treatment results
+14. Before-and-after comparison
+15. Remaining concerns
+16. Scientific limitations
+17. Reference sources
+
+### Features
+
+- Download PDF
+- Export CSV
+- Print report
+- View previous reports when history storage is enabled
+
+### API
+
+`POST /api/reports/generate`
+
+Reports must distinguish original measurements from calculated or simulated outputs.
+
+---
+
+# 14. DATABASE DESIGN
+
+Design a normalized database schema.
+
+Recommended tables:
+
+**water_samples**
+- id
+- source
+- intended_use
+- created_at
+
+**measurements**
+- id
+- sample_id
+- parameter_id
+- value
+- unit
+
+**parameters**
+- id
+- name
+- description
+- canonical_unit
+
+**reference_standards**
+- id
+- name
+- version
+- source
+
+**reference_limits**
+- id
+- standard_id
+- parameter_id
+- limit_type
+- minimum_value
+- maximum_value
+- unit
+- applicability
+
+**treatment_methods**
+- id
+- name
+- description
+- chemistry_principle
+
+**treatment_rules**
+- id
+- parameter_id
+- treatment_id
+- conditions
+- priority
+- limitations
+
+**simulation_models**
+- id
+- treatment_id
+- parameter_id
+- model_type
+- assumptions
+- source
+
+**analysis_results**
+- id
+- sample_id
+- standard_id
+- result_data
+- created_at
+
+**simulation_runs**
+- id
+- analysis_id
+- treatment_sequence
+- result_data
+- created_at
+
+**reports**
+- id
+- analysis_id
+- generated_at
+- file_reference
+
+Use migrations and proper database relationships.
+
+For the first version, avoid mandatory user registration. Allow users to analyze samples immediately.
+
+---
+
+# 15. FRONTEND PROJECT STRUCTURE
+
+Organize the React application into reusable modules.
+
+Suggested structure:
+
+```text
+frontend/
+  src/
+    components/
+      common/
+      layout/
+      dashboard/
+      water-input/
+      analysis/
+      chemistry/
+      treatment/
+      simulator/
+      charts/
+      reports/
+    pages/
+      LandingPage.tsx
+      DashboardPage.tsx
+      AnalysisPage.tsx
+      ChemistryPage.tsx
+      RecommendationsPage.tsx
+      SimulatorPage.tsx
+      WhatIfPage.tsx
+      ComparisonPage.tsx
+      ReportsPage.tsx
+      HistoryPage.tsx
+      AboutPage.tsx
+    services/
+      api.ts
+    hooks/
+    contexts/
+    types/
+    utils/
+    styles/
+    App.tsx
+    main.tsx
+```
+
+Use reusable components and centralized API integration.
+
+---
+
+# 16. BACKEND PROJECT STRUCTURE
+
+Use a modular FastAPI architecture.
+
+```text
+backend/
+  app/
+    main.py
+    api/
+      routes/
+        analysis.py
+        recommendations.py
+        simulation.py
+        scenarios.py
+        reports.py
+        samples.py
+    core/
+      config.py
+    models/
+    schemas/
+    services/
+      water_analyzer.py
+      chemistry_engine.py
+      recommendation_engine.py
+      simulation_engine.py
+      report_generator.py
+    knowledge/
+      parameters.json
+      treatments.json
+      standards.json
+      simulation_models.json
+    database/
+      connection.py
+    utils/
+    tests/
+  requirements.txt
+```
+
+Keep API routes, chemistry rules, simulation logic, and database operations separate.
+
+---
+
+# 17. SAMPLE DATA AND DEMONSTRATION
+
+Include realistic, clearly labeled demonstration datasets.
+
+At minimum, create:
+
+**Dataset A: High Hardness**
+
+A sample with elevated hardness.
+
+**Dataset B: High Turbidity**
+
+A sample requiring consideration of particle-removal processes.
+
+**Dataset C: High Nitrate**
+
+A sample demonstrating nitrate-specific treatment alternatives.
+
+**Dataset D: Multiple Water Quality Problems**
+
+A sample containing several out-of-reference parameters requiring a treatment sequence.
+
+**Dataset E: Mostly Within Reference**
+
+A sample that demonstrates why unnecessary treatment should not automatically be recommended.
+
+These datasets must be labeled as synthetic demonstration examples.
+
+Create a complete demo workflow using Dataset D.
+
+---
+
+# 18. API INTEGRATION
+
+Connect every frontend module to the real backend.
+
+Required endpoints include:
+
+```text
+GET    /api/health
+
+GET    /api/parameters
+
+GET    /api/standards
+
+GET    /api/treatments
+
+POST   /api/analyze
+
+POST   /api/recommend
+
+POST   /api/simulate
+
+POST   /api/compare-scenarios
+
+POST   /api/reports/generate
+
+POST   /api/samples
+
+GET    /api/samples
+
+GET    /api/samples/{id}
+```
+
+Implement:
+
+- Request validation
+- Structured response models
+- Error handling
+- Loading states
+- Appropriate HTTP status codes
+- CORS configuration
+- API documentation
+- Environment-variable configuration
+
+Never use hardcoded fake API responses in the final application.
+
+---
+
+# 19. QUALITY, SECURITY AND ACCESSIBILITY
+
+Follow modern software engineering practices.
+
+Include:
+
+- Type-safe frontend interfaces
+- Input sanitization
+- Backend validation
+- Secure environment variables
+- Parameterized database operations
+- Proper exception handling
+- Clear error messages
+- Accessible forms
+- Keyboard navigation
+- Responsive layouts
+- Secure production CORS configuration
+- No secrets committed to source control
+
+Do not expose internal stack traces to users.
+
+Ensure scientific claims are traceable to their sources.
+
+---
+
+# 20. TESTING AND VALIDATION
+
+Create automated tests for all major modules.
+
+### Backend tests
+
+Test:
+
+- Valid water measurements
+- Invalid measurements
+- Missing parameters
+- Reference-limit comparisons
+- Multiple simultaneous concerns
+- Treatment selection
+- Treatment ordering
+- Unsupported treatment combinations
+- Simulation calculations
+- Scenario comparisons
+- Report generation
+
+### Frontend tests
+
+Test:
+
+- Navigation
+- Forms
+- Validation messages
+- API integration
+- Dashboard rendering
+- Treatment-stage interactions
+- Scenario comparison
+- Report downloads
+
+### End-to-end tests
+
+Verify that a user can:
+
+1. Open AquaSolve.
+2. Select a water source.
+3. Enter measurements.
+4. Run analysis.
+5. View identified concerns.
+6. Read chemistry explanations.
+7. Generate treatment recommendations.
+8. Open the interactive simulator.
+9. Modify treatment stages.
+10. Run the simulation.
+11. Compare before-and-after values.
+12. Perform what-if analysis.
+13. Download the final report.
+
+No dead buttons, placeholder features, broken routes, or unexplained mock responses are allowed in the completed version.
+
+---
+
+# 21. DEPLOYMENT
+
+Prepare the project for public deployment.
+
+### Frontend
+
+Deploy to Vercel.
+
+### Backend
+
+Deploy to Render or another suitable FastAPI hosting provider.
+
+### Database
+
+Use an appropriate persistent database service when history storage is enabled.
+
+### Deployment requirements
+
+- Production environment variables
+- Correct frontend API URL
+- Proper CORS origins
+- Successful frontend build
+- Successful backend startup
+- Database migrations
+- Health-check endpoint
+- Functional report generation
+- Working navigation
+- No exposed credentials
+
+Create a README containing installation, configuration, running, testing, and deployment instructions.
+
+---
+
+# 22. DEVELOPMENT EXECUTION ROADMAP
+
+Build the software in the following 12 phases.
+
+## Phase 1 — Requirements and Architecture
+
+Finalize:
+
+- Application scope
+- Features
+- Technology stack
+- Data models
+- API architecture
+- Scientific limitations
+
+## Phase 2 — Development Environment
+
+Create the project folders.
+
+Install frontend and backend dependencies.
+
+Configure development servers.
+
+Verify that React and FastAPI communicate successfully.
+
+## Phase 3 — UI/UX Design
+
+Design the full application layout.
+
+Create navigation, reusable components, and responsive page structures.
+
+## Phase 4 — Frontend Development
+
+Implement all application pages, forms, charts, and interactive controls.
+
+## Phase 5 — Backend Development
+
+Implement FastAPI routes, request schemas, database integration, and validation.
+
+## Phase 6 — Chemistry Knowledge Base
+
+Create verified parameter definitions, reference standards, treatment knowledge, and scientific explanations.
+
+## Phase 7 — Analysis Engine
+
+Implement parameter evaluation, diagnosis, and structured analysis results.
+
+## Phase 8 — Recommendation Engine
+
+Implement chemistry-based treatment selection and treatment sequencing.
+
+## Phase 9 — Interactive Simulator
+
+Implement treatment-stage controls, simulation calculations, and what-if comparisons.
+
+## Phase 10 — Dashboards and Reports
+
+Implement visual comparisons, analysis history, and downloadable reports.
+
+## Phase 11 — Testing
+
+Run unit, integration, frontend, and end-to-end tests.
+
+Fix errors and verify the scientific assumptions.
+
+## Phase 12 — Deployment and Demonstration
+
+Deploy the application, verify the live system, and prepare a demonstration workflow.
+
+---
+
+# 23. IMPORTANT DEVELOPMENT INSTRUCTIONS
+
+Follow these rules throughout development.
+
+1. Do not build a static prototype and call it a complete application.
+
+2. Do not create buttons that have no functionality.
+
+3. Do not use arbitrary chemical treatment efficiencies without clearly identifying them as assumptions.
+
+4. Do not claim that simulated treated water is certified safe for consumption.
+
+5. Do not invent water-quality standards or regulatory values.
+
+6. Do not replace chemistry-based reasoning with an unexplained generic quality score.
+
+7. Do not unnecessarily introduce machine learning. A transparent rule-based system is preferred for the initial version.
+
+8. Do not overcomplicate the project with unnecessary features such as payments, social networking, or mandatory authentication.
+
+9. Prioritize correct analysis, treatment recommendations, and interactive simulation.
+
+10. Ensure frontend and backend remain fully integrated.
+
+11. Use reusable, maintainable code.
+
+12. Explain every installation command and configuration step.
+
+13. Provide complete working code, not incomplete snippets.
+
+14. Clearly identify the file path before presenting code.
+
+15. When modifying an existing file, explain whether to replace the entire file or a specific section.
+
+16. Do not delete previously implemented functionality while adding new features.
+
+17. Test each completed module before moving to the next phase.
+
+18. Keep the user interface polished, consistent, and responsive.
+
+19. Maintain a clear distinction between demonstration assumptions and verified scientific data.
+
+20. Preserve all core functionality specified in the AquaSolve project draft.
+
+---
+
+# 24. REQUIRED FINAL DELIVERABLES
+
+The finished project must include:
+
+- Complete React frontend
+- Complete FastAPI backend
+- Chemistry knowledge base
+- Configurable reference standards
+- Water-quality analysis engine
+- Treatment recommendation engine
+- Interactive treatment plant
+- What-if simulation engine
+- Before-and-after dashboard
+- PDF report generator
+- Demonstration datasets
+- Automated tests
+- Database configuration
+- README documentation
+- Deployment instructions
+- Working deployed application
+
+Optional future extension:
+
+ESP32 or Arduino sensor integration for collecting water-quality measurements.
+
+Do not make hardware a dependency of the initial software.
+
+---
+
+# 25. HOW YOU MUST GUIDE DEVELOPMENT
+
+I want to build this project from scratch, step by step.
+
+Assume I am developing on Windows using Visual Studio Code.
+
+For each development phase:
+
+1. Explain the objective briefly.
+2. Specify the exact folders and files to create.
+3. Give the required terminal commands.
+4. Provide complete code for each file.
+5. Explain where to paste the code.
+6. Explain how to run the application.
+7. Describe the expected result.
+8. Provide a simple test to verify the implementation.
+9. Help resolve any errors before proceeding.
+10. Wait for my confirmation before starting the next phase.
+
+Do not overwhelm me with the code for all 12 phases at once.
+
+However, always design the architecture with the complete final application in mind.
+
+If you are operating as an autonomous coding agent with access to the project files and terminal, you may implement and test the complete project directly. Report completed work, failed tests, remaining issues, and any deployment actions requiring my authorization. Never claim functionality is complete without verifying it.
+
+# FINAL INSTRUCTION
+
+**Build AquaSolve as a complete, scientifically responsible, visually impressive, fully functional environmental chemistry web application.**
+
+The final application must allow a user to enter real water-test measurements, understand the identified water-quality problems, explore chemistry-based treatment options, interact with a virtual treatment plant, simulate documented treatment assumptions, compare alternative strategies, and generate a professional report.
+
+Prioritize functional correctness, scientific transparency, polished user experience, and successful deployment.
+
+**Begin with Phase 1: Finalize Requirements and Software Architecture.**
